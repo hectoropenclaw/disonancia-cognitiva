@@ -1,0 +1,35 @@
+[
+  {
+    "id": "01-la-tension",
+    "title": "¿Qué te haría cambiar de opinión?",
+    "slides": [
+      "¿Qué haces cuando una idea choca con los hechos?",
+      "Defenderla es fácil. Revisarla exige otra pregunta.",
+      "¿Qué evidencia sí te haría cambiar de opinión?"
+    ],
+    "caption": "A veces no protegemos solo una idea: también protegemos la versión de nosotros que la creyó. ¿Qué evidencia sí te haría cambiar de opinión?",
+    "hashtags": ["#DisonanciaCognitiva", "#Ideas", "#Pensamiento", "#Conversaciones"]
+  },
+  {
+    "id": "02-automatizar",
+    "title": "Automatizar no es desaparecer",
+    "slides": [
+      "Automatizar una tarea no automatiza el criterio.",
+      "Un buen sistema deja ver qué hizo, quién corrige y cuándo.",
+      "¿Qué parte de tu trabajo sí puede operar sola?"
+    ],
+    "caption": "La automatización útil no elimina la responsabilidad: la hace visible. ¿Qué proceso dejarías correr sin supervisión y por qué?",
+    "hashtags": ["#DisonanciaCognitiva", "#Tecnología", "#Trabajo", "#Automatización"]
+  },
+  {
+    "id": "03-cambiar",
+    "title": "Cambiar de idea es parte del método",
+    "slides": [
+      "Revisar una idea no borra quién eras al creerla.",
+      "Solo admite que apareció algo nuevo sobre la mesa.",
+      "¿Qué idea has tenido que revisar?"
+    ],
+    "caption": "Cambiar de idea no siempre es retroceder. A veces es dejar que nueva evidencia participe. ¿Qué idea has tenido que revisar?",
+    "hashtags": ["#DisonanciaCognitiva", "#Ideas", "#Pensamiento", "#Aprender"]
+  }
+]

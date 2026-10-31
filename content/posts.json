@@ -1,0 +1,47 @@
+[
+  {
+    "id": "la-tension-no-es-un-veredicto",
+    "date": "2026-10-31",
+    "category": "Pensamiento",
+    "title": "La tensión no es un veredicto",
+    "excerpt": "Cuando una idea choca con lo que vemos, la primera reacción puede ser protegerla. También podemos usar esa incomodidad para hacer una pregunta mejor.",
+    "readMinutes": 2,
+    "paragraphs": [
+      "A veces una idea encaja tan bien con nuestra historia que dejamos de notar cuándo la realidad empieza a empujar en otra dirección. Esa fricción incomoda. No prueba, por sí sola, que estemos equivocados; sí merece que miremos con más cuidado.",
+      "Una salida rápida es buscar una explicación que conserve intacta la convicción. La otra es preguntar qué estamos viendo, qué estamos dejando fuera y qué evidencia nos haría revisar la idea.",
+      "La disonancia no tiene que terminar en una sentencia sobre quién tenía razón. Puede convertirse en una pausa: el momento en que una certeza deja de ser automática y vuelve a estar abierta a examen.",
+      "Este espacio nace para quedarse un poco más en esa pausa. No para dudar de todo ni para discutir por deporte, sino para distinguir entre una idea que resistió una pregunta honesta y una que solo evitó escucharla."
+    ],
+    "reelId": "01-la-tension"
+  },
+  {
+    "id": "automatizar-no-es-desaparecer",
+    "date": "2026-10-31",
+    "category": "Trabajo y tecnología",
+    "title": "Automatizar no es desaparecer",
+    "excerpt": "Un sistema puede ejecutar una tarea. El criterio para observarlo, corregirlo y hacerse cargo del resultado sigue siendo una decisión humana.",
+    "readMinutes": 2,
+    "paragraphs": [
+      "Automatizar una tarea puede liberar tiempo y reducir fricción. Pero que un proceso corra sin intervención constante no significa que se haya quedado sin dueño.",
+      "Cuando algo falla, importan preguntas muy concretas: ¿qué ocurrió?, ¿quién puede corregirlo?, ¿qué señal permite detectarlo y qué registro explica la decisión? Sin esas respuestas, la autonomía se parece demasiado a la invisibilidad.",
+      "Un buen sistema no solo hace cosas. También vuelve legible lo que hizo, deja una salida para corregir el rumbo y señala dónde termina la máquina y empieza la responsabilidad de una persona.",
+      "La pregunta útil no siempre es cuánto podemos automatizar. También es qué decisiones queremos delegar, cuáles necesitan contexto y qué evidencia nos permitirá saber si la delegación está funcionando."
+    ],
+    "reelId": "02-automatizar"
+  },
+  {
+    "id": "cambiar-de-idea-es-parte-del-metodo",
+    "date": "2026-10-31",
+    "category": "Ideas",
+    "title": "Cambiar de idea es parte del método",
+    "excerpt": "Una convicción puede haber sido razonable con la información de ayer y necesitar otra forma después de conocer algo nuevo.",
+    "readMinutes": 2,
+    "paragraphs": [
+      "Cambiar de opinión suele sentirse como perder terreno. Sin embargo, una idea no se vuelve más propia por conservarla intacta; se vuelve más útil cuando sabemos por qué la sostenemos y qué podría moverla.",
+      "Eso no exige seguir cada novedad ni tratar todas las versiones como igual de sólidas. Exige separar la identidad de una conclusión: puedo haber pensado algo de buena fe y aun así encontrar razones para corregirlo.",
+      "La frase «me equivoqué» no borra el camino que nos llevó hasta allí. Describe que apareció información, una experiencia o una pregunta que antes no estaba sobre la mesa.",
+      "Quizá la medida de una convicción no sea cuán difícil resulta moverla. Quizá sea si puede explicar qué evidencia la sostiene y qué tendría que pasar para volver a examinarla."
+    ],
+    "reelId": "03-cambiar"
+  }
+]
