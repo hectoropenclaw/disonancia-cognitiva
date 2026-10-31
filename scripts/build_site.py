@@ -13,6 +13,7 @@ SITE = ROOT / "docs"
 BRAND = json.loads((ROOT / "content" / "brand.json").read_text(encoding="utf-8"))
 POSTS = json.loads((ROOT / "content" / "posts.json").read_text(encoding="utf-8"))
 REELS = json.loads((ROOT / "content" / "reels.json").read_text(encoding="utf-8"))
+ORDERED_POSTS = sorted(POSTS, key=lambda post: post["date"], reverse=True)
 MONTHS = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
 
 
@@ -26,11 +27,10 @@ def date_label(value):
 
 
 def post_markup(post):
-    return f"""<article class="article" id="{esc(post['id'])}">
-      <div class="article-meta"><span>{esc(post['category'])}</span><span>{post['readMinutes']} min</span></div>
-      <h3>{esc(post['title'])}</h3>
-      <p class="excerpt">{esc(post['excerpt'])}</p>
-      <a class="read-link" href="posts/{esc(post['id'])}.html">Leer la nota <span aria-hidden="true">↗</span></a>
+    return f"""<article class="archive-item" id="{esc(post['id'])}">
+      <div class="archive-meta"><span>{date_label(post['date'])}</span><span>{esc(post['category'])}</span><span>{post['readMinutes']} min</span></div>
+      <div class="archive-copy"><h3><a href="posts/{esc(post['id'])}.html">{esc(post['title'])}</a></h3>
+      <p class="excerpt">{esc(post['excerpt'])}</p></div>
     </article>"""
 
 
@@ -38,6 +38,10 @@ def post_page(post):
     paragraphs = "\n".join(f"<p>{esc(p)}</p>" for p in post["paragraphs"])
     url = BRAND["siteUrl"] + "posts/" + post["id"] + ".html"
     title = post["title"] + " — " + BRAND["name"]
+    more_posts = [item for item in ORDERED_POSTS if item["id"] != post["id"]][:2]
+    more_markup = "\n".join(f"""<a class="related-item" href="{esc(item['id'])}.html">
+        <span>{esc(item['category'])} · {date_label(item['date'])}</span><strong>{esc(item['title'])}</strong>
+      </a>""" for item in more_posts)
     return f"""<!doctype html>
 <html lang="es-MX">
 <head>
@@ -73,6 +77,10 @@ def post_page(post):
       <div class="post-byline">Por {esc(BRAND['byline'])}</div>
       <div class="post-body">{paragraphs}</div>
     </article>
+    <nav class="more-reading" aria-label="Seguir leyendo">
+      <h2>Sigue leyendo</h2>
+      <div class="related-list">{more_markup}</div>
+    </nav>
     <div class="post-end"><span>Disonancia Cognitiva</span><a href="../#notas">Seguir leyendo las notas →</a></div>
   </main>
 </body>
@@ -114,7 +122,18 @@ for reel in REELS:
         if source.exists():
             shutil.copy2(source, reel_dir / source.name)
 
-post_sections = "\n".join(post_markup(post) for post in POSTS)
+latest_post = ORDERED_POSTS[0] if ORDERED_POSTS else None
+post_sections = "\n".join(post_markup(post) for post in ORDERED_POSTS)
+if latest_post:
+    latest_markup = f"""<article class="featured-post" aria-labelledby="latest-title">
+        <span class="section-kicker">La última nota</span>
+        <div class="article-meta"><span>{esc(latest_post['category'])}</span><span>{date_label(latest_post['date'])} · {latest_post['readMinutes']} min</span></div>
+        <h2 id="latest-title"><a href="posts/{esc(latest_post['id'])}.html">{esc(latest_post['title'])}</a></h2>
+        <p class="excerpt">{esc(latest_post['excerpt'])}</p>
+        <a class="read-link" href="posts/{esc(latest_post['id'])}.html">Leer la nota <span aria-hidden="true">↗</span></a>
+      </article>"""
+else:
+    latest_markup = '<p class="featured-post">Pronto, una nueva nota.</p>'
 reel_sections = "\n".join(f"""<article class="reel">
       <video controls playsinline preload="none" poster="reels/{esc(reel['id'])}.jpg" aria-label="Video: {esc(reel['title'])}">
         <source src="reels/{esc(reel['id'])}.mp4" type="video/mp4">
@@ -163,24 +182,18 @@ page = f"""<!doctype html>
         <span class="kicker">Un cuaderno personal · {topics}</span>
         <h1>Pensar también <em>es cambiar.</em></h1>
         <p class="hero-copy">{esc(BRAND['description'])}</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#notas">Leer las notas</a>
-          <a class="button" href="#videos">Ver los videos</a>
-        </div>
+        <p class="hero-tagline">{esc(BRAND['tagline'])}</p>
       </div>
-      <aside class="hero-note">
-        <p>Una idea que nunca se pone en duda puede terminar pareciéndose demasiado a una costumbre.</p>
-        <span>La pregunta antes de la respuesta</span>
-      </aside>
+      {latest_markup}
     </section>
 
     <div class="shell rule"></div>
-    <section class="shell" id="notas" aria-labelledby="notes-title">
+    <section class="shell archive-section" id="notas" aria-labelledby="notes-title">
       <div class="section-head">
-        <div><span class="section-kicker">Notas de campo</span><h2 id="notes-title">Ideas en revisión.</h2></div>
+        <div><span class="section-kicker">Archivo personal</span><h2 id="notes-title">Todas las notas.</h2></div>
         <p>Sobre lo que creemos, lo que hacemos y las señales que nos invitan a mirar otra vez.</p>
       </div>
-      <div class="articles">{post_sections}</div>
+      <div class="archive-list">{post_sections}</div>
     </section>
 
     <section class="reels-band" id="videos" aria-labelledby="videos-title">
